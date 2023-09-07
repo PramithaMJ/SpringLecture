@@ -4,19 +4,29 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "employee")
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") // This is not necessary if the column name is the same as the variable name
+    @Column(name = "id")
     private int id;
-    @Column(name = "first_name") // This is not necessary if the column name is the same as the variable name
-    private String firstName;
-    @Column(name = "last_name") // This is not necessary if the column name is the same as the variable name;
+
+    @Column(name = "first_name")
+    private  String firstName;
+    @Column(name = "last_name")
     private String lastName;
-    @Column(name = "email") // This is not necessary if the column name is the same as the variable name
+    @Column(name = "email")
     private String email;
 
+    //no arg constructor
     public Employee() {
+    }
 
+    //Paremeterized constructor
+    public Employee(int id, String firstName, String lastName, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     }
 
     public int getId() {

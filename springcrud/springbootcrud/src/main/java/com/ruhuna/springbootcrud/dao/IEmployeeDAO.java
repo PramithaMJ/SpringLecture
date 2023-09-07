@@ -1,4 +1,4 @@
-package com.ruhuna.springbootcrud.dao.EmployeeDAO;
+package com.ruhuna.springbootcrud.dao;
 
 import com.ruhuna.springbootcrud.entities.Employee;
 

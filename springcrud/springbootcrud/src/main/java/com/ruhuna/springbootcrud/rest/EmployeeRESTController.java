@@ -1,26 +1,31 @@
 package com.ruhuna.springbootcrud.rest;
-
-import com.ruhuna.springbootcrud.dao.EmployeeDAOImpl;
+import com.ruhuna.springbootcrud.dao.IEmployeeDAO;
+import com.ruhuna.springbootcrud.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/api")
+import java.util.List;
+
+
+@RequestMapping("api")
 @RestController
 public class EmployeeRESTController {
+    private IEmployeeDAO employeeDAO;
 
-    private EmployeeDAOImpl employeeDAO;
 
     @Autowired
-    public EmployeeRESTController(EmployeeDAOImpl employeeDAO) {
+    //Constructor Based DI
+    public EmployeeRESTController(IEmployeeDAO employeeDAO) {
         this.employeeDAO = employeeDAO;
     }
-
+    //localhost:8080/api/employees
     @GetMapping("/employees")
-    public String findAll() {
-        System.out.printf("pramitha");
-        return employeeDAO.findAll().toString();
+    List<Employee> findAllEmployees()
+    {
+        return employeeDAO.findAll();
     }
+
 
 }
