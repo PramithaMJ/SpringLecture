@@ -2,6 +2,7 @@ package com.ruhuna2.dependencyinjection.rest;
 
 import com.ruhuna2.dependencyinjection.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,8 +12,8 @@ public class DIDemoRestController {
 
     @Autowired
     //search @Component, @Service, @Repository, @Controller, @RestController annotations with the type of Coach
-    public DIDemoRestController(Coach coach) {
-        this.coach = coach;
+    public DIDemoRestController(@Qualifier("basketBall") Coach thecoach) {
+        this.coach = thecoach;
     }
 
     @GetMapping("/workout")
