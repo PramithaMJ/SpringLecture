@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
     }
 
     @Override
+    @Transactional
     public Employee save(Employee employee){
         Employee savedEmployee = entityManager.merge(employee);
 
@@ -47,6 +49,7 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
     }
 
     @Override
+    @Transactional
     public void deleteByID(int id) {
 
         Employee employee = entityManager.find(Employee.class,id);

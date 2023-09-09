@@ -27,7 +27,7 @@ public class EmployeeRESTController {
         return employeeService.findAll();
     }
 
-    @GetMapping("/employees/{requeatedId}")
+    @GetMapping("/employees/{requestedId}")
     Employee findEmployeeById(@PathVariable int requestedId)
     {
         //if this id is not in the databse this employee object will be null
@@ -59,8 +59,17 @@ public class EmployeeRESTController {
     }
 
     @DeleteMapping("/employees/{requestedId}")
-    public void deletedEmployeeById(@PathVariable int id){
-        
+    public String deletedEmployeeById(@PathVariable int requestedId)
+    {
+        Employee employee = employeeService.findbyID(requestedId);
+        if(employee == null){
+            throw new RuntimeException("Requested Employee id not found - "+requestedId);
+        }
+        else {
+            employeeService.deleteByID(requestedId);
+        }
+
+        return "Delete id" + requestedId +"from the database";
     }
 
 
