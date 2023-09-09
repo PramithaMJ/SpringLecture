@@ -3,6 +3,7 @@ import com.ruhuna.springbootcrud.dao.IEmployeeDAO;
 import com.ruhuna.springbootcrud.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +26,12 @@ public class EmployeeRESTController {
     List<Employee> findAllEmployees()
     {
         return employeeDAO.findAll();
+    }
+
+    @GetMapping("/employees/{requeatedId}")
+    Employee findEmployeeById(@PathVariable int requestedId)
+    {
+        return employeeDAO.findbyID(requestedId);
     }
 
 
