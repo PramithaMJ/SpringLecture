@@ -1,15 +1,11 @@
-package com.ruhuna.springbootcrud.dao;
+package com.ruhuna.springbootcrud.service;
 
 import com.ruhuna.springbootcrud.entities.Employee;
 
 import java.util.List;
 
-//hiding the implementation details by interface
-//interface is a is away to achieve abstraction
-public interface IEmployeeDAO {
-
+public interface IEmployeeService {
     List<Employee> findAll();
-
     Employee findbyID(int id);
     Employee save(Employee employee);
     void deleteByID(int id);
